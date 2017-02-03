@@ -6,7 +6,7 @@
   "scripts": {
     "start": "nodemon .",
     "test": "mocha",
-    "test-watch": "mocha --watch"
+    "watch": "mocha --watch"
   },
   "author": "",
   "license": "ISC",
