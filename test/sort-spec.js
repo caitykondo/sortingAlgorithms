@@ -1,15 +1,10 @@
 const chai = require('chai');
+const bubbleSort = require('./../index.js');
 
 chai.should();
 
-describe('sanity', () => {
-
-  it('should be true', () => {
-    true.should.equal(true);
-  });
-});
-
 describe('bubbleSort', () => {
+
   it('should correctly sort an array of numbers', () => {
     let randomArr = [9, 2, 4, 5, 1];
     bubbleSort(randomArr).should.deep.equal([1,2,4,5,9]);
@@ -22,7 +17,7 @@ describe('bubbleSort', () => {
 
   it('should throw an error if array contains value other than a number', () => {
     let stringArr = ['nine', 3, 1, 3];
-    let objArr = [{obj}, s1, 3];
+    let objArr = [{hello: "hello"}, 1, 3];
     let boolArr = [false, 7, 9];
     let nullArr = [null, 1];
 
