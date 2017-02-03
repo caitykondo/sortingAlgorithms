@@ -1,5 +1,5 @@
 const chai = require('chai');
-const bubbleSort = require('./../index.js');
+const bubbleSort = require('./../bubbleSort.js');
 
 chai.should();
 

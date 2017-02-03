@@ -1,9 +1,19 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const handlebars  = require('express-handlebars');
+const app = express();
 
 let bubbleSort = require('./bubbleSort');
 
-const app = express();
+const hbs = handlebars.create({
+  extname: 'hbs',
+  defaultLayout: 'app'
+});
+
+app.engine('hbs', hbs.engine);
+app.set('view engine', 'hbs');
+
+
 
 app.use(express.static('./'));
 
@@ -14,16 +24,18 @@ app.use(function (err, req, res, next) {
   res.status(500).send('Something broke!');
 });
 
+app.get('/', (req, res)=>{
+  res.render('./index');
+});
+
 app.post('/', (req, res)=>{
 
-  console.log(req.body);
   let stringArr = req.body.array.split(',');
-  console.log(stringArr);
   let numArray = [];
+
   stringArr.forEach((num)=> {
     numArray.push(parseInt(num));
   });
-  console.log(numArray);
   res.send(bubbleSort(numArray));
 });
 
