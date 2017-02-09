@@ -13,8 +13,6 @@ const hbs = handlebars.create({
 app.engine('hbs', hbs.engine);
 app.set('view engine', 'hbs');
 
-
-
 app.use(express.static('./'));
 
 app.use(bodyParser.urlencoded({extended: false}));
@@ -25,18 +23,22 @@ app.use(function (err, req, res, next) {
 });
 
 app.get('/', (req, res)=>{
-  res.render('./index');
+  res.render('index');
 });
 
 app.post('/', (req, res)=>{
-
   let stringArr = req.body.array.split(',');
   let numArray = [];
 
   stringArr.forEach((num)=> {
-    numArray.push(parseInt(num));
+    if(typeof num === 'number'){
+      numArray.push(parseInt(num));
+    }else{
+      res.send('error');
+    }
   });
-  res.send(bubbleSort(numArray));
+
+  res.render('index', {array : bubbleSort(numArray)});
 });
 
 

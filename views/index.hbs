@@ -1,5 +1,9 @@
 <form name="bubbleSort" action="/" method="POST">
   <label for="array">Array</label>
-  <input type="text" id="arrayInput" name="arrayInput" placeholder="Array">
+  <input type="text" id="array" name="array" placeholder="ex. 2, 455, 1000">
   <input type="submit" value="Submit">
+  {{#if array}}
+    <h1>sorted:</h1>
+    {{array}}
+  {{/if}}
 </form>
