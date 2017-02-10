@@ -1,16 +1,131 @@
-There are many algorithms that deal with sorting collections of data. One of the most basic forms of sorting is known as __Bubble Sort__ and is named by it's nature of the order of data having a "bubbling" effect as a collection of data is sorted. We will start off by implementing a Bubble Sort algorithm on a one-dimensional Array.
+Create a README.md file and for each algorithm include the following:
 
-###Bubble Sort Implementation
-The trick to remembering bubble sort is to visualize that your array is vertical rather than horizontal. If smaller values are "deeper" in the array, they will "rise" to the top until they are the smallest value. If larger values are "higher" in the array, they will sink to the bottom until they are the largest value.
+* Explain to a five year old how the algorithm works (3-4 sentences max)
+*Psuedo code for each sorting implementation
+*In your own words, describe the performance of the alogirthm for the following cases:
+    * Best case scenario
+    * Worst case scenario
 
-###Your challenge
-1. Create a project and a repo for your Bubble Sort implementation. You probably want a README as well.
-2. Add Mocha/Chai to your project for writing your tests against your function.
-3. Write your tests __FIRST__ that will indicate that your sorting function works with multiple inputs.
-4. Implement a function that will take an input Array and apply the bubble sort algorithm to sort the input and return the number of moves that were necessary to sort the Array.
+# Sorting Algorithms
 
-###Extra
-Create a way for all Arrays to be able to use your bubble sort function as a method of the Array object.
+## Bubble Sort
 
-###Super Extra
-Write a browser tool that will visually show the array and it's values as they are being sorted to see how the elements are moving in real time. It will be impossible to see things being sorted in real time, so you may need to tweak your function to make this work or find new ways of calling it.
+* Takes the first value in an array and compares that to the next value
+* If the second value is greater than the first, the two are swapped
+* The next two numbers are compared
+* This is repeated until the end of the array is reached
+* The entire process is repeated until no values need to be swapped and all are in order
+
+  #### Psuedocode
+
+  ```
+  bubbleSort(array)
+    l = array.length
+    for i = 0 ; i < l ; i++ (
+      if array[i] > array[ i + 1 ]
+        swap( array[i] with array[ i + 1 ] )
+        swapped = true
+    )
+    if swapped = false (
+      end
+    )
+    bubbleSort(array)
+
+  swap(arr[i], arr[ i + 1 ])
+    hold = arr[i]
+    arr[i] = arr[ i + 1 ]
+    arr[ i + 1 ] = hold
+  end
+  ```
+  ##### Best Case
+    * Already sorted
+      `O(n)`
+
+
+  ##### Worst Case
+    * Reverse order
+      `O(n^2)`
+
+## Quick Sort
+
+* Starting from a given value (pivot), all numbers in an array are sorted into two lists : either less than (left) or greater than/equal to (right)
+* The new right and left lists keep splitting until there is only one number per list
+* Then the lists are combined together in order : |Left|-|Pivot|-|Right|, until all lists are combined into one list
+
+  #### Psuedocode
+
+  ```
+  quicksort(array)
+    pivot = array[i] //qs can be optimized depending on position
+    left = []
+    right = []
+
+    if pivot > array[ i + 1 ]
+      push array[ i + 1 ] into left
+
+    if pivot < array[ i + 1 ]
+      push array[ i + 1 ] into right
+
+    loop until array.length <= 1
+      array = left + pivot + right
+
+    return array
+  ```
+  ##### Best Case
+    * Almost sorted
+      `O(n)`
+
+
+  ##### Worst Case
+    * Already sorted
+      `O(n^2)`
+
+## Insertion Sort
+
+* Starting from the second number in the array, compare this number with the number before it
+* Move the number until it find a number before it that is less than or equal to the given number
+* Do the same with all the numbers until the end of the array
+
+  #### Psuedocode
+
+  ```
+  insertionSort(array)
+    loop through all the values in the array
+      if array[i] > array[ i - 1 ]
+        swap values of array[i] with array [ i - 1 ]
+  ```
+  ##### Best Case
+    * Already sorted
+      `O(n)`
+
+
+  ##### Worst Case
+    * Reverse sorted
+      `O(n^2)`
+
+## Selection Sort
+
+* Find the biggest number in an array and move it to the last spot
+* Repeat with the remaining numbers, except the highest remaining number is moved to the second, third, fourth spot & so on
+
+  #### Psuedocode
+
+  ```
+  selectionSort(array)
+    loop
+      max = findMaxValue(array)
+      array(array.length - 1) = max
+    return when all numbers have been sorted
+
+  ```
+
+  ##### Best Case
+    * Already sorted
+      `O(n)`
+
+
+  ##### Worst Case
+    * Reverse sorted
+      `O(n^2)`
+
+## Merge Sort
