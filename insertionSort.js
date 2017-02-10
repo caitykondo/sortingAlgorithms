@@ -16,5 +16,3 @@ return arr;
 }
 
 console.log(insertionSort(arr));
-
-
